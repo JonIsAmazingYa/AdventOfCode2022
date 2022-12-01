@@ -2,7 +2,7 @@
 class Elf:
 
   def __init__(self):
-    self.food_carried: int = []
+    self.food_carried: list[int] = []
 
   def add_food(self, cals: int) -> None:
     self.food_carried.append(cals)
@@ -10,8 +10,9 @@ class Elf:
   def get_calories(self) -> int:
     return sum(self.food_carried)
 
-elves = []
-current_elf = Elf()
+
+elves: list[Elf] = []
+current_elf: Elf = Elf()
 
 with open('input.txt') as fh:
   for line in fh.readlines():
@@ -21,7 +22,7 @@ with open('input.txt') as fh:
       elves.append(current_elf)
       current_elf = Elf()
 
-total_count = 0
+total_count: int = 0
 
 for i in range(3):
   next_elf = max(elves, key=lambda elf: elf.get_calories())
